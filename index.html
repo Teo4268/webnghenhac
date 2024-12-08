@@ -73,7 +73,6 @@
             color: #888;
         }
     </style>
-    <script src="https://w.soundcloud.com/player/api.js"></script>
 </head>
 <body>
     <h1>Music Player</h1>
@@ -82,7 +81,7 @@
         <div class="song" onclick="playSong('Test.mp3', 'Song 1')">🎵 Song 1</div>
         <div class="song" onclick="playSong('De Anh Luong Thien - Thang Eo Vi || Full Option.mp3', 'Song 2')">🎵 Song 2</div>
         <div class="song" onclick="playSong('NOI NAY CO ANH VAVH.mp3', 'Song 3')">🎵 Song 3</div>
-        <div class="song" onclick="playSoundCloud('https://soundcloud.com/quang-tran-823028923/5_6287077508474999189-mp3')">🎵 Song 4 (SoundCloud)</div>
+        <div class="song" onclick="playSoundCloud()">🎵 Song 4 (SoundCloud)</div>
     </div>
 
     <div class="controls">
@@ -95,43 +94,24 @@
 
     <audio id="audioPlayer" preload="auto"></audio>
 
+    <!-- Embed SoundCloud iframe -->
+    <div id="soundcloudPlayer" style="display: none;">
+        <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/quang-tran-823028923/5_6287077508474999189-mp3&auto_play=true"></iframe>
+    </div>
+
     <script>
         const audioPlayer = document.getElementById('audioPlayer');
         const playlist = [
             { file: "Test.mp3", title: "Song 1" },
             { file: "De Anh Luong Thien - Thang Eo Vi || Full Option.mp3", title: "Song 2" },
-            { file: "NOI NAY CO ANH VAVH.mp3", title: "Song 3" },
-            { file: "https://soundcloud.com/quang-tran-823028923/5_6287077508474999189-mp3", title: "Song 4 (SoundCloud)" }
+            { file: "NOI NAY CO ANH VAVH.mp3", title: "Song 3" }
         ];
         let currentIndex = -1;
-
-        // Media Session API
-        if ('mediaSession' in navigator) {
-            navigator.mediaSession.setActionHandler('play', playPause);
-            navigator.mediaSession.setActionHandler('pause', playPause);
-            navigator.mediaSession.setActionHandler('previoustrack', prevSong);
-            navigator.mediaSession.setActionHandler('nexttrack', nextSong);
-        }
 
         function playSong(file, title) {
             audioPlayer.src = file;
             audioPlayer.play();
             currentIndex = playlist.findIndex(song => song.file === file);
-            updateMediaSession(title);
-        }
-
-        function playSoundCloud(url) {
-            const widgetContainer = document.createElement('div');
-            widgetContainer.id = 'soundcloud-widget';
-            document.body.appendChild(widgetContainer);
-
-            const widget = SC.Widget(widgetContainer);
-            widget.load(url, {
-                auto_play: true,
-                show_comments: false,
-                show_user: false,
-                show_reposts: false
-            });
         }
 
         function playPause() {
@@ -162,14 +142,9 @@
             }
         }
 
-        function updateMediaSession(title) {
-            if ('mediaSession' in navigator) {
-                navigator.mediaSession.metadata = new MediaMetadata({
-                    title: title,
-                    artist: "Unknown Artist",
-                    album: "My Music",
-                });
-            }
+        function playSoundCloud() {
+            // Show the SoundCloud iframe player and start playing
+            document.getElementById('soundcloudPlayer').style.display = 'block';
         }
     </script>
 </body>

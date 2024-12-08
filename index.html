@@ -78,9 +78,10 @@
     <h1>Music Player</h1>
 
     <div class="playlist">
-        <div class="song" onclick="playSong('5_6147798389149929884.mp3', 'Song 1')">🎵 Song 1</div>
+        <div class="song" onclick="playSong('Test.mp3', 'Song 1')">🎵 Song 1</div>
         <div class="song" onclick="playSong('De Anh Luong Thien - Thang Eo Vi || Full Option.mp3', 'Song 2')">🎵 Song 2</div>
         <div class="song" onclick="playSong('NOI NAY CO ANH VAVH.mp3', 'Song 3')">🎵 Song 3</div>
+        <div class="song" onclick="playSoundCloud('https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/quang-tran-823028923/5_6287077508474999189-mp3&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true')">🎵 Song 4 (SoundCloud)</div>
     </div>
 
     <div class="controls">
@@ -98,7 +99,8 @@
         const playlist = [
             { file: "Test.mp3", title: "Song 1" },
             { file: "De Anh Luong Thien - Thang Eo Vi || Full Option.mp3", title: "Song 2" },
-            { file: "NOI NAY CO ANH VAVH.mp3", title: "Song 3" }
+            { file: "NOI NAY CO ANH VAVH.mp3", title: "Song 3" },
+            { file: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/quang-tran-823028923/5_6287077508474999189-mp3&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true", title: "Song 4 (SoundCloud)" }
         ];
         let currentIndex = -1;
 
@@ -115,6 +117,16 @@
             audioPlayer.play();
             currentIndex = playlist.findIndex(song => song.file === file);
             updateMediaSession(title);
+        }
+
+        function playSoundCloud(url) {
+            const iframe = document.createElement('iframe');
+            iframe.src = url;
+            iframe.width = '100%';
+            iframe.height = '166';
+            iframe.frameBorder = 'no';
+            iframe.allow = 'autoplay';
+            document.body.appendChild(iframe);
         }
 
         function playPause() {

@@ -5,9 +5,10 @@ const prevBtn = document.getElementById("prev");
 const trackName = document.getElementById("track-name");
 
 const tracks = [
-  { name: "Song 1", src: "song1.mp3" },
-  { name: "Song 2", src: "song2.mp3" },
-  { name: "Song 3", src: "song3.mp3" }
+  { name: "Song 1", src: "1.mp3" },
+  { name: "Song 2", src: "NOI NAY CO ANH VAVH.mp3" },
+  { name: "Song 3", src: "De Anh Luong Thien - Thang Eo Vi || Full Option.mp3" },
+  { name: "Song 4", src: "Test.mp3" }
 ];
 
 let currentTrack = 0;
